@@ -114,7 +114,7 @@ module Capwagen
         end
 
         task :initialize_database do
-          run "cd #{latest_release} && #{drush_cmd} site-install #{install_profile} --yes"
+          run "cd #{latest_release} && #{drush_cmd} site-install $(#{drush_cmd} kw-env-info --pipe) --yes"
         end
         task :apply_module_dependencies do
           run "cd #{latest_release} && #{drush_cmd} kw-apply-module-dependencies #{kraftwagen_environment}"
